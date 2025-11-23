@@ -60,7 +60,7 @@ You should confirm:
 
 ## 📚 References
 
-- [Eng. Mohamed Elhady YouTube channel]([https://eve-ng.com/](https://www.youtube.com/@CCNA-CCNP-CCIE-Mohamed.Elhady) — for lab setup tips. :contentReference[oaicite:0]{index=0}  
+- [Eng. Mohamed Elhady]([YouTube channel](https://www.youtube.com/@CCNA-CCNP-CCIE-Mohamed.Elhady) — for lab setup tips. :contentReference[oaicite:0]{index=0}  
 
 ---
 
