@@ -1,0 +1,138 @@
+
+Current configuration : 1429 bytes
+!
+! Last configuration change at 15:59:34 UTC Sun Nov 23 2025
+!
+version 17.12
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+login on-success log
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+memory free low-watermark processor 81225
+!
+!
+spanning-tree mode rapid-pvst
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+crypto isakmp policy 1
+ encryption aes
+ hash sha256
+ authentication pre-share
+ group 21
+crypto isakmp key cisco123 address 13.0.0.1
+!
+!
+crypto ipsec transform-set R3-set esp-aes 256 esp-sha-hmac
+ mode tunnel
+!
+crypto ipsec profile PROF1
+ set transform-set R3-set
+!
+!
+!
+!
+!
+!
+!
+!
+interface Tunnel0
+ ip address 172.16.0.2 255.255.255.0
+ tunnel source 23.0.0.1
+ tunnel destination 13.0.0.1
+ tunnel protection ipsec profile PROF1
+!
+interface Ethernet0/0
+ ip address 23.0.0.1 255.255.255.252
+!
+interface Ethernet0/1
+ ip address 192.168.1.1 255.255.255.0
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+!
+router eigrp 100
+ network 172.16.0.0
+ network 192.168.1.0
+!
+ip forward-protocol nd
+!
+!
+ip http server
+ip http secure-server
+ip route 0.0.0.0 0.0.0.0 23.0.0.2
+ip ssh bulk-mode 131072
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input ssh
+!
+!
+!
+!
+end
